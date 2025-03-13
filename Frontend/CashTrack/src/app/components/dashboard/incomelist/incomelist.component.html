@@ -1,0 +1,15 @@
+
+<div class="list-group mt-2" id="jovedelemlista">
+    <div class="list-group-item list-group-item-action flex-column align-items-start" style="background-color: rgba(240, 240, 240, 0.8); color: rgb(40, 40, 40);" *ngFor="let jovedelem of jovedelmek; let i = index" id="jovedelemLista">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{jovedelem.kategoria.jovedelemKategoria}}</h5>
+        <small class="text-secondary">{{jovedelem.bevetelDatum}}</small>
+      </div>
+      <p class="mb-2">{{jovedelem.bevetelHUF}} Ft</p>
+      <div style="display: flex; justify-content: space-between;">
+      
+      <button class="btn btn-danger" (click)="jovedelemTorles(i,jovedelem.jovedelemID)">Törlés</button>
+      </div>
+    </div> 
+  </div>
+    

@@ -1,0 +1,17 @@
+.chart-container {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    background-color: none; /* Sötét háttér a grafikonhoz */
+    border-radius: 8px;
+    padding: 16px;
+    
+  }
+  
+  :host {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+  }

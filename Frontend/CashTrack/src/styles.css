@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('bootstrap/dist/css/bootstrap.min.css');
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@font-face {
+    font-family: 'Satoshi-Bold';
+    src: url('assets/fonts/Satoshi-Bold.woff2') format('woff2'),
+         url('assets/fonts/Satoshi-Bold.woff') format('woff'),
+         url('assets/fonts/Satoshi-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Satoshi-Light';
+    src: url('assets/fonts/Satoshi-Light.woff2') format('woff2'),
+         url('assets/fonts/Satoshi-Light.woff') format('woff'),
+         url('assets/fonts/Satoshi-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Satoshi-Variable';
+    src: url('assets/fonts/Satoshi-Variable.woff2') format('woff2'),
+         url('assets/fonts/Satoshi-Variable.woff') format('woff'),
+         url('assets/fonts/Satoshi-Variable.ttf') format('truetype');
+    font-weight: 300 900;
+    font-display: swap;
+    font-style: normal;
+   
+  }
+body {
+  background: fixed;
+    background-color: black;
+    background-image: url('assets/bg.jpg'); /* A helyes útvonalat használd */
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Satoshi-Variable";
+    font-variation-settings: wght 900.0;
+    color: white;
+    
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

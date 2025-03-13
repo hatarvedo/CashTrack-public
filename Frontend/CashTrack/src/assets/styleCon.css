@@ -1,0 +1,38 @@
+.devPics{
+    height: 200px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.textCenter{
+    text-align: center;
+}
+
+a{
+    color: darkgreen;
+}
+
+input{
+    width: 300px;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+.uzenet{
+    height: 200px;
+}
+
+.gomb{
+    padding: 10px 35px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+}
+
+.gomb:hover{
+        background-color: rgba(143, 143, 143, 0.6);
+        border-radius: 17.6px;
+        transition: 0.2s ease-in-out;
+}

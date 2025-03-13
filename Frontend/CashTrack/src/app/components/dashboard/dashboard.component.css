@@ -1,0 +1,157 @@
+.havikiadasok {
+    color: white;
+}
+
+/* filepath: /c:/Users/marto/Documents/GitHub/CashTrack/CashTrack/src/app/components/dashboard/dashboard.component.scss */
+#sidebar {
+    height: 110vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    overflow-x: hidden;
+    border: 12px linear-gradient(#084404, #0c0c0c) solid;
+    border-radius: 20px;
+    padding: 1.9em;
+    background: linear-gradient(rgba(0, 51, 1, 0.4), rgba(12, 12, 12, 0.8));
+    color: white;
+    margin: 25px;
+    margin-bottom: -25px;
+  }
+
+  hr{
+    background-color: white;
+  }
+
+  #expenseComment{
+    width: 350px;
+    height: 210px;
+  }
+
+  .modal-content{
+    background: rgba(48, 48, 48, 0.85);
+    color: white;
+  }
+
+  .incomeModal input, .expenseModal input, .incomeModal select, .expenseModal select{
+    background: rgba(48, 48, 48, 0.15);
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+  }
+
+  .incomeModal input:focus, .incomeModal input:focus::after, .incomeModal select:focus{
+    border: 3px solid green;
+    transition: 0.2s all ease-in-out;
+  }
+
+  .nav-item a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .incomeModal input::placeholder, .expenseModal input::placeholder{
+    color: grey;
+    text-align: center;
+  }
+  
+  .favicon{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: white;
+  }
+
+  .dropdown-menu {
+    background-color: rgba(46, 46, 46, 0.3);
+    color: white;
+    margin: 25px;
+    margin-bottom: -25px;
+  }
+  
+  .nav-link {
+    color: #fff;
+  }
+  
+  .nav-link.active {
+    color: #0d6efd;
+    background-color: #e9ecef;
+  }
+
+  .main-content {
+    margin-left: 250px; /* Adjust this value based on the sidebar width */
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .main-content {
+      margin-left: 0;
+    }
+  }
+
+.nav-item-anim:hover{
+    background-color: rgba(143, 143, 143, 0.6);
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+    padding: 5px;
+}
+
+.dropdown-menu a:hover{
+    background-color: rgba(143, 143, 143, 0.6);
+    transition: 0.2s ease-in-out;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.offlineblink{
+  color:#f35a5a;
+  text-shadow: 0px 0px 5px #f35a5a;
+  text-transform: uppercase;
+  animation: blinker 1s linear infinite;
+}
+
+.information {
+  display: flex;
+  justify-content: space-between;
+}
+
+.information div{
+  margin-right: 40px;
+}
+
+.areaGraph{
+  margin-left: 35vh;
+}
+
+.pieChart{
+  margin-left: 35vh;
+}
+
+@media (max-width: 768px) {
+  .information{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+  }
+
+  .information div{
+    margin-right: 80px;
+  }
+
+  .areaGraph{
+    margin-left: 100px;
+  }
+
+  .sidebar{
+    bottom: 0;
+  }
+
+  .pieChart{
+    margin-left: 100px;
+  }
+}

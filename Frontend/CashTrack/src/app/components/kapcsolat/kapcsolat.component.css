@@ -1,0 +1,25 @@
+.devPics{
+    height: 200px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.textCenter{
+    text-align: center;
+}
+
+a{
+    color: darkgreen;
+}
+
+input{
+    width: 300px;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+.uzenet{
+    height: 200px;
+}

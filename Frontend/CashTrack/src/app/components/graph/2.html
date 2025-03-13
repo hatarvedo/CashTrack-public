@@ -1,0 +1,18 @@
+<div class="year-selector">
+    <button (click)="changeYear(currentYear - 1)" [disabled]="!hasDataForYear(currentYear - 1)" class="year-button">
+      {{ currentYear - 1 }}
+    </button>
+    <span class="current-year">{{ currentYear }}</span>
+    <button (click)="changeYear(currentYear + 1)" [disabled]="!hasDataForYear(currentYear + 1)" class="year-button">
+      {{ currentYear + 1 }}
+    </button>
+  </div>
+  
+  <div class="chart-container">
+    <canvas baseChart
+      [data]="lineChartData"
+      [options]="lineChartOptions"
+      [legend]="lineChartLegend"
+      type="line">
+    </canvas>
+  </div>
