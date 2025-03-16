@@ -1,0 +1,13 @@
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  .offlineblink{
+    text-align: center;
+    color:#f35a5a;
+    text-shadow: 0px 0px 5px #f35a5a;
+    text-transform: uppercase;
+    animation: blinker 1s linear infinite;
+  }
