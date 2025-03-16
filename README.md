@@ -14,11 +14,29 @@ A **CashTrack** egy szakmai projekt keretein belül készül, amit a SZIKSZI di�
 
 
 ## Backend beüzemelési folyamat folyamat:
-1.Telepítsük a XAMPP-ot, a Git-et, valamint a Composer-t a számítógépre.
+1. Telepítsük a XAMPP-ot, a Git-et, valamint a Composer-t a számítógépre.
+
 2. Indítsuk el a XAMPP-ot, aztán a programon belül az Apache és MySQL szervereket.
-3. Ha rendelkezünk mind a három programmal, nyissunk egy konzolos felületet. (pl. CMD, PowerShell). Írjuk be a következő parancsot: 
+3. 
+4. Ha rendelkezünk mind a három programmal, nyissunk egy konzolos felületet. (pl. CMD, PowerShell). Írjuk be a következő parancsot: 
 > composer global require laravel/installer
+
 4. Migráljuk fel a táblákat a MySQL felületre a következő paranccsal:
 > php artisan migrate —seed
+
 5.A sikeres migráció után futtassuk a szervert a következő paranccsal:
 >php artisan serve
+
+
+## Frontend beüzemelési folyamat
+
+1. Telepítsük a Node.js. (lásd: Követelmények)
+2. Nyissuk meg a Visual Studio Code-t.
+3. Nyissunk egy új terminált. (Ctrl+Shift+ö)
+4. Írjuk be a telepítéshez szükséges parancsot.
+   > npm install -g @angular/cli
+5. Navigáljunk el a "CashTrack" mappába.
+   > cd Frontend
+   > cd CashTrack
+6. Indítsuk el a szervert.
+  > ng serve, vagy ng s
