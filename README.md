@@ -13,7 +13,7 @@ A **CashTrack** egy szakmai projekt keretein belül készül, amit a SZIKSZI di�
 * Node.js [Letöltés](https://nodejs.org/en) - v18.19.1 vagy újabb (aktuális verzió: v23.10.0 - 2025/03/16)
 
 
-## Backend beüzemelési folyamat folyamat:
+## Backend beüzemelési folyamat:
 1. Telepítsük a XAMPP-ot, a Git-et, valamint a Composer-t a számítógépre.
 
 2. Indítsuk el a XAMPP-ot, aztán a programon belül az Apache és MySQL szervereket.
@@ -28,7 +28,7 @@ A **CashTrack** egy szakmai projekt keretein belül készül, amit a SZIKSZI di�
 >php artisan serve
 
 
-## Frontend beüzemelési folyamat
+## Frontend beüzemelési folyamat:
 
 1. Telepítsük a Node.js. (lásd: Követelmények)
    
