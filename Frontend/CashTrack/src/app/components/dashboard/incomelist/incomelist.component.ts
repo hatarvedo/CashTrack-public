@@ -25,9 +25,7 @@ export class IncomelistComponent {
     this.jovedelemService.jovedelemLekeres();
     this.jovedelemekFelugyelet = JSON.parse(localStorage.getItem('jovedelmek')|| '[]' );
     console.log(this.jovedelemekFelugyelet);
-    this.jovedelemService.jovedelem$.subscribe((data) => {
-      this.jovedelmek = data;
-    });
+   this.jovedelmek= this.jovedelemService.jovedelemLekeresJSON();
   }
   jovedelemTorles(index: number, jovedelemID: number) {
     this.jovedelemService.jovedelemTorles(index,jovedelemID);

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, signal, ViewChild, viewChild } from '@angular/core';
+import { Component, computed, Signal, signal, ViewChild, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { JovedelemManagerService } from '../../services/jovedelem-manager.service';
@@ -11,12 +11,13 @@ import { GraphComponent } from '../graph/graph.component';
 import { PolarareaComponent } from '../../polararea/polararea.component';
 import { Kiadas } from '../../models/Kiadas.model';
 import { IncomelistComponent } from './incomelist/incomelist.component';
+import { PiechartComponent } from '../piechart/piechart.component';
 
 
 
 @Component({
     selector: 'app-dashboard',
-    imports: [FormsModule, RouterLink,NgFor,ExpenselistComponent,GraphComponent,PolarareaComponent,NgIf,IncomelistComponent],
+    imports: [FormsModule, RouterLink,NgFor,ExpenselistComponent,GraphComponent,PolarareaComponent,NgIf,IncomelistComponent,PiechartComponent],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.css'
 })
@@ -154,28 +155,39 @@ currentYear: number = 0;
       console.log('kiadaskategoriak:',this.kiadaskategoriatomb);
       this.jovedelemkategoriatomb = JSON.parse(localStorage.getItem('jovedelemkategoriak') || '[]');
       this.jovedelemService.jovedelemLekeres();
-      this.HaviJovedelemFrissitese();
-      this.HaviKiadasokFrissitese();
-      this.HaviOsszesFrissitese(); 
+      setTimeout(() => {
+        this.HaviJovedelemFrissitese();
+        this.HaviKiadasokFrissitese();
+        this.HaviOsszesFrissitese(); 
+      },1000)
+  
     }
     //Jövedelem havi kezelése
   jovedelemHaviTemp : number = 0;
-  havijovedelmek = signal(0);
+  havijovedelmek = signal(0);   
   
-  HaviJovedelemFrissitese(){
-    this.jovedelemFelugyelet = JSON.parse(localStorage.getItem('jovedelmek')|| '[]' );
+/*   HaviJovedelemFrissitese(){
+    this.jovedelemFelugyelet = this.jovedelemService.jovedelemLekeresJSON();
     console.log('jovedelem havi frissitese',this.jovedelemFelugyelet);
-    this.jovedelemService.jovedelem$.subscribe((data) =>
-      {
-        this.jovedelmek = data;
-      });
-      this.jovedelemHaviTemp = 0;
+   
+    this.jovedelemHaviTemp = 0;
     this.jovedelemFelugyelet.forEach((element:any) => {
       this.jovedelemHaviTemp = this.jovedelemHaviTemp + element.bevetelHUF
     });
     this.HaviOsszesFrissitese(); 
     return this.havijovedelmek.update(count => this.jovedelemHaviTemp)
-  }
+  } */
+    HaviJovedelemFrissitese(){
+
+      this.jovedelmek = JSON.parse(localStorage.getItem('jovedelmek') || '[]');
+      this.jovedelemHaviTemp = 0;
+      this.jovedelmek.forEach((element:any) => {
+        this.jovedelemHaviTemp = this.jovedelemHaviTemp + element.bevetelHUF
+      });
+      this.HaviOsszesFrissitese(); 
+      return this.havijovedelmek.update(count => this.jovedelemHaviTemp)
+    }
+ 
   
   //Kiadások havi kezelése
   havikiadasokSzamolo:number = 0;

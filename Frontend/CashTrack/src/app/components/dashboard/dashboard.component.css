@@ -128,9 +128,7 @@
   margin-left: 35vh;
 }
 
-.pieChart{
-  margin-left: 35vh;
-}
+
 
 @media (max-width: 768px) {
   .information{
@@ -154,4 +152,6 @@
   .pieChart{
     margin-left: 100px;
   }
-}
+ }
+
+
