@@ -30,7 +30,7 @@ A **CashTrack** egy szakmai projekt keretein belül készül, amit a SZIKSZI di�
 
 ## Frontend beüzemelési folyamat:
 
-1. Telepítsük a Node.js. (lásd: Követelmények)
+1. Telepítsük a Node.js-t. (lásd: Követelmények)
    
 2. Nyissuk meg a Visual Studio Code-t.
    
