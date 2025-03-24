@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { NgFor } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { KiadasManagerService } from '../../../services/kiadas-manager.service';
   styleUrl: './expenselist.component.css'
 })
 export class ExpenselistComponent {
-  kiadasKategoriak: any[]=[];
+
   kiadasok: any[] = []
   constructor(private kiadasService: KiadasManagerService){
     this.kiadasok = JSON.parse(localStorage.getItem('kiadasok')|| '[]' );
@@ -33,5 +33,10 @@ ngOnInit(): void {
 
   kiadasTorles(index: number,kiadasID: number) {
     this.kiadasService.kiadasTorles(index,kiadasID);
+    setTimeout(() => {
+      this.ngOnInit();
+      this.kiadasService.kiadasokLekeres();
+    }, 2000);
+    
   }
 }

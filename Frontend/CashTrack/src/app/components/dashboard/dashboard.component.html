@@ -50,20 +50,20 @@
   </div>
   <div class="content col-5 mt-3">
     <div class="information mt-3 mb-3">
-      <div class="col-4" data-bs-toggle="modal" data-bs-target="#jovedelemModal">
+      <div class="col-4 m-3 adatDoboz" data-bs-toggle="modal" data-bs-target="#jovedelemModal">
           <h4>Havi jövedelem</h4>
           <h4 class="text-success">{{havijovedelmek()}} HUF</h4>
       </div>
-      <div class="col-4 " data-bs-toggle="modal" data-bs-target="#kiadasokModal">
+      <div class="col-4 m-3 adatDoboz" data-bs-toggle="modal" data-bs-target="#kiadasokModal">
           <h4 >Havi kiadások</h4>
           <h4 class="text-danger">-{{havikiadasok()}} HUF</h4>
       </div>
-      <div class="col-4">
+      <div class="col-4 m-3 adatDoboz">
         <h4>Havi összes</h4>
         <h4 *ngIf="haviosszes() > 0; else negative" class="text-success">{{haviosszes()}} HUF</h4>
 
         <ng-template #negative>
-          <h4 class="text-danger">-{{haviosszes()}} HUF</h4>
+          <h4 class="text-danger">{{haviosszes()}} HUF</h4>
         </ng-template>
       </div>
     </div>
@@ -80,6 +80,9 @@
         <div class="col-2"></div>
         <div class="col-10 mb-3 d-flex justify-content-center">
           <app-polararea class="responsive-chart"></app-polararea>
+        </div>
+        <div class="col-10 mb-3 d-flex justify-content-center">
+          <app-piechart></app-piechart>
         </div>
       </div>
   </div>

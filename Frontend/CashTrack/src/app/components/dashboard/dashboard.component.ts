@@ -12,6 +12,7 @@ import { PolarareaComponent } from '../../polararea/polararea.component';
 import { Kiadas } from '../../models/Kiadas.model';
 import { IncomelistComponent } from './incomelist/incomelist.component';
 import { PiechartComponent } from '../piechart/piechart.component';
+import { count } from 'rxjs';
 
 
 
@@ -74,6 +75,10 @@ currentYear: number = 0;
         this.jovedelemService.jovedelemLekeres()
         this.HaviJovedelemFrissitese();
         this.HaviOsszesFrissitese(); 
+        setTimeout(() => {
+          this.incomelist?.ngOnInit();
+        }, 700);
+        
         
       });
     }
@@ -103,9 +108,14 @@ currentYear: number = 0;
   kiadasAdat = signal<Kiadas[]>([]);
   @ViewChild(PolarareaComponent) polarareachart: PolarareaComponent | undefined;
   @ViewChild(GraphComponent) graph: GraphComponent | undefined;
+  @ViewChild(PiechartComponent) piechart: PiechartComponent | undefined;
+  @ViewChild(IncomelistComponent) incomelist: IncomelistComponent | undefined;
   grafikonFrissitese(){
     this.polarareachart?.ngAfterViewInit();
     this.graph?.ngOnInit();
+    this.piechart?.ngAfterViewInit();
+    this.incomelist?.ngOnInit();
+
    
   }
   kiadasHozzaadas(){
@@ -144,27 +154,26 @@ currentYear: number = 0;
     jovedelemFelugyelet:any[] = []
     ngOnInit(): void {
       this.authService.login();
-      const currentDate = new Date();
-      this.currentYear = currentDate.getFullYear();
-      this.currentMonth = currentDate.getMonth() + 1; // Hónapok 0-tól 11-ig vannak számozva, ezért hozzáadunk 1-et
-      this.currentDay = currentDate.getDay();
-      this.wholeYear = currentDate.getFullYear();
       this.kiadasService.kiadasKategoriakLekerese();
       this.jovedelemService.KategoriakLekerese();
-      this.kiadaskategoriatomb = JSON.parse(localStorage.getItem('kiadaskategoriak') || '[]');
+      this.jovedelemKategoriakLekeres();
+      
       console.log('kiadaskategoriak:',this.kiadaskategoriatomb);
-      this.jovedelemkategoriatomb = JSON.parse(localStorage.getItem('jovedelemkategoriak') || '[]');
+      
       this.jovedelemService.jovedelemLekeres();
       setTimeout(() => {
         this.HaviJovedelemFrissitese();
         this.HaviKiadasokFrissitese();
         this.HaviOsszesFrissitese(); 
+        this.kiadaskategoriatomb = JSON.parse(localStorage.getItem('kiadaskategoriak') || '[]');
+        this.jovedelemkategoriatomb = JSON.parse(localStorage.getItem('jovedelemkategoriak') || '[]');
       },1000)
+
   
     }
     //Jövedelem havi kezelése
   jovedelemHaviTemp : number = 0;
-  havijovedelmek = signal(0);   
+  havijovedelmek = computed(() => this.jovedelemService.szamolas());   
   
 /*   HaviJovedelemFrissitese(){
     this.jovedelemFelugyelet = this.jovedelemService.jovedelemLekeresJSON();
@@ -177,37 +186,44 @@ currentYear: number = 0;
     this.HaviOsszesFrissitese(); 
     return this.havijovedelmek.update(count => this.jovedelemHaviTemp)
   } */
+    
     HaviJovedelemFrissitese(){
 
-      this.jovedelmek = JSON.parse(localStorage.getItem('jovedelmek') || '[]');
+      /* this.jovedelmek = JSON.parse(localStorage.getItem('jovedelmek') || '[]');
       this.jovedelemHaviTemp = 0;
       this.jovedelmek.forEach((element:any) => {
         this.jovedelemHaviTemp = this.jovedelemHaviTemp + element.bevetelHUF
       });
       this.HaviOsszesFrissitese(); 
-      return this.havijovedelmek.update(count => this.jovedelemHaviTemp)
+      return this.havijovedelmek.update(count => this.jovedelemHaviTemp) */
+      this.jovedelemService.jovOsszeadas()
+      
+      console.log('havijovdelemek signal',this.havijovedelmek())
+     
     }
  
   
   //Kiadások havi kezelése
   havikiadasokSzamolo:number = 0;
-  havikiadasok =signal(0);
+  havikiadasok =computed(() => this.kiadasService.szamolas()); 
   
   
   HaviKiadasokFrissitese(){
-    this.kiadasok = JSON.parse(localStorage.getItem('kiadasok') || '[]');
+    /* this.kiadasok = JSON.parse(localStorage.getItem('kiadasok') || '[]');
     this.havikiadasokSzamolo = 0;
     this.kiadasok.forEach((element:any) => {
       this.havikiadasokSzamolo = this.havikiadasokSzamolo + element.kiadasHUF;
     });
     this.HaviOsszesFrissitese();
-    return this.havikiadasok.update(count => this.havikiadasokSzamolo)
+    return this.havikiadasok.update(count => this.havikiadasokSzamolo) */
+    this.kiadasService.kiadOsszeadas()
     
   }
 
-  haviosszes = signal(0);
+  haviosszes = computed(() => this.havijovedelmek() - this.havikiadasok());   ;
+  
   HaviOsszesFrissitese(){
-    return this.haviosszes.update(count => this.havijovedelmek() - this.havikiadasok())
+   /*  return this.haviosszes.update(count => this.havijovedelmek() - this.havikiadasok()) */
   }
     logout(): void {
       this.authService.logout();

@@ -83,22 +83,7 @@ export class KiadasManagerService {
       console.log(Response);
     });
   }
-/*   kiadasokKategoriaNeve(){
-    this.kiadasokLekeres();
-    this.kiadasKategoriakLekerese();
 
-    this.kiadasokOsszes.forEach(element => {
-      this.kiadaskategoriatomb.forEach(kiadasKategoriak => 
-        {
-        if(element.kategoriaID = kiadasKategoriak.kategoriaID)
-          {
-          element.kategoriaNev = kiadasKategoriak.kiadasKategoria
-          }
-        
-      });
-    });
-    localStorage.setItem('kiadasok', JSON.stringify(this.kiadasokOsszes));
-  } */
   kiadasokFrissitese(ujKiadasok: Kiadas[]) {
     localStorage.setItem(this.kiadaskulcs, JSON.stringify(ujKiadasok));
     this.kiadasokFigyeles.next(ujKiadasok); 
@@ -111,6 +96,24 @@ export class KiadasManagerService {
     return this.http.post(`${this.apiUrl}`, kiadasAdat)
     
   }
- 
+  tomb:any[] = [];
+  countTemp = 0;
+  szamolas = signal<number>(0);
+  kiadOsszeadas(){
+    const user = JSON.parse(localStorage.getItem('felhasznalo') || '{}');
+    this.http.get(`${this.apiUrl}/felhasznalo/${user.felhasznaloID}`).subscribe((data:any) => {
+      this.tomb = data;
+      console.log('Tömb adatok (jövedelem)',this.tomb);
+      this.countTemp = 0;
+      this.tomb.forEach(element => {
+        
+        this.countTemp  += element.kiadasHUF;
+        console.log("countTemp változó:",this.countTemp);
+      });
+      this.szamolas.update(count => this.countTemp)
+      console.log("Ez itt mi?",this.szamolas())
+    });
+    return this.szamolas;
+  }
 
 }
