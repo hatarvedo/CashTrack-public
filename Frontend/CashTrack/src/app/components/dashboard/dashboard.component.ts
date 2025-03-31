@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, computed, Signal, signal, ViewChild, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -14,11 +14,26 @@ import { IncomelistComponent } from './incomelist/incomelist.component';
 import { PiechartComponent } from '../piechart/piechart.component';
 import { count } from 'rxjs';
 
-
-
 @Component({
     selector: 'app-dashboard',
-    imports: [FormsModule, RouterLink,NgFor,ExpenselistComponent,GraphComponent,PolarareaComponent,NgIf,IncomelistComponent,PiechartComponent],
+    standalone: true,
+    imports: [
+        FormsModule, 
+        RouterLink,
+        NgFor,
+        ExpenselistComponent,
+        GraphComponent,
+        PolarareaComponent,
+        NgIf,
+        IncomelistComponent,
+        PiechartComponent,
+        HttpClientModule
+    ],
+    providers: [
+        JovedelemManagerService,
+        KiadasManagerService,
+        AuthService
+    ],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.css'
 })
@@ -153,23 +168,33 @@ currentYear: number = 0;
   kiadasokFelugyelet: any[] = []
     jovedelemFelugyelet:any[] = []
     ngOnInit(): void {
+      // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+      const felhasznalo = localStorage.getItem('felhasznalo');
+      if (!felhasznalo) {
+        this.router.navigate(['/login']);
+        return;
+      }
+
+      // Adatok inicializálása
+      this.initializeData();
+    }
+
+    private initializeData(): void {
       this.authService.login();
       this.kiadasService.kiadasKategoriakLekerese();
       this.jovedelemService.KategoriakLekerese();
       this.jovedelemKategoriakLekeres();
       
-      console.log('kiadaskategoriak:',this.kiadaskategoriatomb);
+      console.log('kiadaskategoriak:', this.kiadaskategoriatomb);
       
       this.jovedelemService.jovedelemLekeres();
-      setTimeout(() => {
-        this.HaviJovedelemFrissitese();
-        this.HaviKiadasokFrissitese();
-        this.HaviOsszesFrissitese(); 
-        this.kiadaskategoriatomb = JSON.parse(localStorage.getItem('kiadaskategoriak') || '[]');
-        this.jovedelemkategoriatomb = JSON.parse(localStorage.getItem('jovedelemkategoriak') || '[]');
-      },1000)
-
-  
+      
+      // Adatok betöltése
+      this.HaviJovedelemFrissitese();
+      this.HaviKiadasokFrissitese();
+      this.HaviOsszesFrissitese(); 
+      this.kiadaskategoriatomb = JSON.parse(localStorage.getItem('kiadaskategoriak') || '[]');
+      this.jovedelemkategoriatomb = JSON.parse(localStorage.getItem('jovedelemkategoriak') || '[]');
     }
     //Jövedelem havi kezelése
   jovedelemHaviTemp : number = 0;

@@ -28,17 +28,8 @@
            
             <h3> Bejelentkezés</h3>
             <div class="mb-3">
-                <mat-form-field class="form-control">
-                    <mat-label>E-mail</mat-label>
-                    <input type="email" matInput class="mat-input-element" [formControl]="emailFormControl" [(ngModel)]="email" [errorStateMatcher]="matcher"
-                           placeholder="pl. minta.erno@cashtrack.com">
-                    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-                      <mat-error>Adj meg egy létező e-mail címet!</mat-error>
-                    }
-                    @if (emailFormControl.hasError('required')) {
-                      <mat-error>Az e-mail cím mező kitöltése <strong>kötelező!</strong></mat-error>
-                    }
-                  </mat-form-field>
+                <label class="form-label toLeft">E-mail</label>
+                <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mail">
 
             </div>
             <div class="mb-3">
