@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('bootstrap/dist/css/bootstrap.min.css');
 @import "bootstrap-icons/font/bootstrap-icons.css";
+@import "aos/dist/aos.css";
 @font-face {
     font-family: 'Satoshi-Bold';
     src: url('assets/fonts/Satoshi-Bold.woff2') format('woff2'),

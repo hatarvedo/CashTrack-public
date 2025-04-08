@@ -1,12 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { KiadasManagerService } from './kiadas-manager.service';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('KiadasManagerService', () => {
   let service: KiadasManagerService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: 
+      [
+        KiadasManagerService,provideHttpClient()
+      ]});
     service = TestBed.inject(KiadasManagerService);
   });
 

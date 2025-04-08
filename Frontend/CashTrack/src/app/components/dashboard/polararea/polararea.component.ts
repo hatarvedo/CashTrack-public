@@ -1,8 +1,10 @@
 import { Component, computed, inject, signal, Signal, ViewChild } from '@angular/core';
-import { ChartConfiguration } from 'chart.js';
+import { ChartConfiguration, Chart } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { KiadasManagerService } from '../../../services/kiadas-manager.service';
+import { registerables } from 'chart.js';
 
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-polararea',
