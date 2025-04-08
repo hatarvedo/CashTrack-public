@@ -45,6 +45,7 @@ export class LoginComponent {
           localStorage.setItem('felhasznalo', JSON.stringify(response));
           console.log('Felhasználó adatai: ', response);
           this.authService.login();
+          this.authService.isLoggedIn.set(true);
           
           // Várunk egy kicsit, hogy a localStorage frissüljön
           setTimeout(() => {
@@ -66,7 +67,7 @@ export class LoginComponent {
     this.router.navigate(['/register']);
   }
 
-belepesVizsgalat=true;
+
 
 
 

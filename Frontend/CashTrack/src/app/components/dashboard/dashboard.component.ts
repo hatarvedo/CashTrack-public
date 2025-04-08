@@ -27,7 +27,6 @@ import AOS from 'aos';
         NgIf,
         IncomelistComponent,
         PiechartComponent,
-        HttpClientModule
     ],
     providers: [
         JovedelemManagerService,
@@ -256,10 +255,7 @@ currentYear: number = 0;
   }
     logout(): void {
       this.authService.logout();
-      localStorage.removeItem('felhasznalo');
-      this.router.navigate(['home']);
-      this.authService.logout();
-      localStorage.clear();
+      this.router.navigate(['/home']);
     }
   
     notWorking(): void{

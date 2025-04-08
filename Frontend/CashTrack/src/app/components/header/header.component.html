@@ -2,9 +2,7 @@
     <div class="header mt-3 mb-5" id="header">
         <div class="logo-container col-5 col-lg-6 col-md-4 col-sm-5 inline">     
             <div>
-                <a data-aos="fade-down" data-aos-duration="1500" routerLink="" *ngIf="!isLoggedIn; else dashPicture;">
-                    <img class="cashTracklogo" src="../../../assets/logo.jpg" alt="CashTrackLogo" width="100" height="100" fill>
-                </a>
+              <a data-aos="fade-down" data-aos-duration="1500" routerLink="" *ngIf="!loggedIn(); else dashPicture;"><img class="cashTracklogo" src="assets/logo.jpg" alt="CashTrackLogo" width="100" height="100" fill></a>
             </div>
             <ng-template #dashPicture></ng-template>
         </div>
@@ -14,7 +12,7 @@
                 <a data-aos="fade-down" data-aos-duration="2500" routerLink='/kapcsolat'>Kapcsolat</a>
                 <a data-aos="fade-down" data-aos-duration="2000" routerLink='/rolunk'>Rólunk</a>
                 <div>
-                    <a data-aos="fade-down" data-aos-duration="1500" routerLink='/login' *ngIf="!isLoggedIn; else dash;">Bejelentkezés</a>
+                    <a data-aos="fade-down" data-aos-duration="1500" routerLink='/login' *ngIf="!loggedIn(); else dash;">Bejelentkezés</a>
                     <ng-template #dash>
                         <a data-aos="fade-down" data-aos-duration="1500" routerLink='/dashboard'>Irányítópult</a>
                     </ng-template>
@@ -29,7 +27,7 @@
                 <a routerLink='/'>Főoldal</a>
                 <a routerLink='/kapcsolat'>Kapcsolat</a>
                 <a routerLink='/rolunk'>Rólunk</a>
-                <a routerLink='/login' *ngIf="!isLoggedIn; else mobileDash;">Bejelentkezés</a>
+                <a routerLink='/login' *ngIf="!loggedIn(); else mobileDash;">Bejelentkezés</a>
                 <ng-template #mobileDash>
                     <a routerLink='/dashboard'>Irányítópult</a>
                 </ng-template>

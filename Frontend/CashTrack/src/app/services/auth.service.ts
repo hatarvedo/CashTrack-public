@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,23 +8,30 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private isLoggedInSource = new BehaviorSubject<boolean>(this.checkLoginStatus());
   isLoggedIn$ = this.isLoggedInSource.asObservable();
+  isLoggedIn = signal(this.checkLoginStatus());
 
   constructor() {
     // Figyeljük a localStorage változásait
     window.addEventListener('storage', () => {
-      this.isLoggedInSource.next(this.checkLoginStatus());
+      this.updateLoginStatus();
     });
   }
 
   login() {
     localStorage.setItem('isLoggedIn', 'true');
-    this.isLoggedInSource.next(true);
+    this.updateLoginStatus();
   }
 
   logout() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('felhasznalo');
-    this.isLoggedInSource.next(false);
+    this.updateLoginStatus();
+  }
+
+  updateLoginStatus() {
+    const status = this.checkLoginStatus();
+    this.isLoggedInSource.next(status);
+    this.isLoggedIn.set(status);
   }
 
   private checkLoginStatus(): boolean {

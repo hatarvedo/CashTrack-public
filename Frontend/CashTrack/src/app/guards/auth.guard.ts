@@ -14,9 +14,8 @@ export const authGuard = async () => {
       console.log('Nincs felhasználó a localStorage-ban');
       return router.parseUrl('/login');
     }
-
     // Ellenőrizzük a bejelentkezési állapotot
-    const isLoggedIn = await firstValueFrom(authService.isLoggedIn$);
+    const isLoggedIn = await authService.isLoggedIn;
     if (!isLoggedIn) {
       console.log('Nincs bejelentkezve');
       return router.parseUrl('/login');
