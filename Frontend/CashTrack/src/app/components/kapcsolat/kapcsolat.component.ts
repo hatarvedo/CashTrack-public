@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import AOS from 'aos';
 
 @Component({
     selector: 'app-kapcsolat',
@@ -8,5 +9,7 @@ import { HeaderComponent } from '../header/header.component';
     styleUrl: './kapcsolat.component.css'
 })
 export class KapcsolatComponent {
-
+    ngOnInit(): void {
+        AOS.init();
+    }
 }

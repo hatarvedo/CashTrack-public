@@ -15,6 +15,9 @@
 .szoveg{
     text-align: left;
     display: grid;
+    margin-left: 100px;
+    margin-top: 100px;
+    padding-right: 100px;
   
   
   grid-column: 3/6;
@@ -103,4 +106,45 @@
 
 .title{
   text-align: center;
+}
+
+.registerDiv{
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+}
+
+.registerButton{
+    justify-content: center;
+    padding: 5px 10px;
+    grid-column: 3/7;
+
+    
+}
+.spline-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  bottom: 100px;
+  position: relative;
+  grid-column: 4/10;
+
+}
+.phone-3d{
+  position: absolute;
+  top: 0;
+  right: -20%;
+}
+
+@media (max-width: 768px) {
+  .spline-container {
+    grid-column: 1/12;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .phone-3d {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
 }

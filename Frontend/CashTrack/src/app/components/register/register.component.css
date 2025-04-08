@@ -1,0 +1,262 @@
+.havikiadasok {
+    color: white;
+}
+
+/* filepath: /c:/Users/marto/Documents/GitHub/CashTrack/CashTrack/src/app/components/dashboard/dashboard.component.scss */
+#sidebar {
+    height: 110vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    overflow-x: hidden;
+    border: 12px linear-gradient(#084404, #0c0c0c) solid;
+    border-radius: 20px;
+    padding: 1.9em;
+    background: linear-gradient(rgba(0, 51, 1, 0.4), rgba(12, 12, 12, 0.8));
+    color: white;
+    margin: 25px;
+    margin-bottom: -25px;
+  }
+
+  hr{
+    background-color: white;
+  }
+
+  #expenseComment{
+    width: 350px;
+    height: 210px;
+  }
+
+  .modal-content{
+    background: rgba(48, 48, 48, 0.85);
+    color: white;
+  }
+
+  .incomeModal input, .expenseModal input, .incomeModal select, .expenseModal select{
+    background: rgba(48, 48, 48, 0.15);
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #333;
+  }
+
+  .incomeModal input:focus, .incomeModal input:focus::after, .incomeModal select:focus{
+    border: 3px solid green;
+    transition: 0.2s all ease-in-out;
+  }
+
+  .nav-item a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .incomeModal input::placeholder, .expenseModal input::placeholder{
+    color: grey;
+    text-align: center;
+  }
+  
+  .favicon{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: white;
+  }
+
+  .dropdown-menu {
+    background-color: rgba(46, 46, 46, 0.3);
+    color: white;
+    margin: 25px;
+    margin-bottom: -25px;
+  }
+  
+  .nav-link {
+    color: #fff;
+  }
+  
+  .nav-link.active {
+    color: #0d6efd;
+    background-color: #e9ecef;
+  }
+
+  .main-content {
+    margin-left: 250px; /* Adjust this value based on the sidebar width */
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .main-content {
+      margin-left: 0;
+    }
+  }
+
+.nav-item-anim:hover{
+    background-color: rgba(143, 143, 143, 0.6);
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+    padding: 5px;
+}
+
+.dropdown-menu a:hover{
+    background-color: rgba(143, 143, 143, 0.6);
+    transition: 0.2s ease-in-out;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.offlineblink{
+  color:#f35a5a;
+  text-shadow: 0px 0px 5px #f35a5a;
+  text-transform: uppercase;
+  animation: blinker 1s linear infinite;
+}
+
+.login{
+  margin-top: 25px;
+  border: 12px linear-gradient(#084404, #0c0c0c) solid;
+  border-radius: 20px;
+  padding: 1.5em;
+  background: linear-gradient(rgba(0, 51, 1, 0.4), rgba(12, 12, 12, 0.4));
+  color: white;
+}
+
+
+.logo img{
+  height: 100px;
+  width: 100px;
+
+}
+
+#email, #password, #vezeteknev, #keresztnev{
+  background-color: rgba(12, 12, 12, 0.7);
+  border: 2px solid transparent;
+  border-radius: 15px;
+}
+
+#email:focus, #password:focus, #vezeteknev:focus, #keresztnev:focus{
+  border: 2px solid green;
+  transition: all 0.2s ease-in-out;
+  color: #9f9f9f;
+}
+
+svg path {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 0.3;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: textAnimation 3s ease-in-out 1 forwards;
+}
+
+@keyframes textAnimation {
+  0% {
+    stroke-dashoffset: 450;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    fill: #fff;
+    stroke-dashoffset: 0;
+  }
+}
+
+.contentbox {
+  display: none;
+  animation: contentAnimation 0s ease in 1 forwards;
+  animation-delay: 3s;
+}
+
+@keyframes contentAnimation {
+  0% {
+    display: none;
+  }
+  100% {
+    display: block;
+  }
+}
+
+.title{
+text-align: center;
+}
+
+h3{
+  text-align: center;
+}
+
+#email::placeholder, #password::placeholder, #vezeteknev::placeholder, #keresztnev::placeholder{
+  color: rgb(110, 110, 110);
+}
+
+#remember:focus{
+  transition: 0.7s all ease-in-out;
+  background-color: green;
+}
+
+#remember{
+  background-color: #084404;
+}
+
+#remember::after{
+  background-color: green;
+}
+
+.centered{
+  text-align: center;
+}
+
+.centered button{
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  padding: 5px 10px;
+}
+
+.centered button:hover{
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(116, 116, 119, 0.3);
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+
+}
+
+.question{
+  margin-top: 15px;
+  text-align: center;
+}
+
+.question a{
+  color: #084404;
+  text-decoration: none;
+  
+  display: inline-block;
+  padding: 3px 4px;
+  position: relative;
+}
+
+.question a:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 30%;
+  position: absolute;
+  background: #084404;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.question a:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+
+.question a:hover{
+  font-weight: bold;
+  transition: 0.3s all ease-in-out;
+}

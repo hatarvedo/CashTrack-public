@@ -1,132 +1,139 @@
 <div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="sidebar">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
+    <div data-aos="fade-down" data-aos-duration="1500" class="row">
+        <div data-aos="fade-down" data-aos-duration="1500" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="sidebar">
+            <div data-aos="fade-down" data-aos-duration="1500" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
                 <a href="/" class="d-flex align-items-center pb-3 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Üdvözlünk, {{user.keresztnev}}</span>
+                    <span data-aos="fade-down" data-aos-duration="1500" class="fs-5 d-none d-sm-inline">Üdvözlünk, {{user.keresztnev}}</span>
                 </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                  <li class="nav-item">
-                    <a routerLink='/home'>
-                      <span class="ms-1 d-none d-sm-inline nav-item-anim"><i class="fs-4 bi-house mt-1"></i> &nbsp;Kezdőlap&nbsp;</span>
-                    </a>
-                  </li>  
-                  <li class="nav-item">
-                        <a (click)="jovedelemKategoriakLekeres()" href="#" data-bs-toggle="modal" data-bs-target="#addIncome" class="nav-link align-middle px-0">
-                          <span class="ms-1 d-none d-sm-inline nav-item-anim"><i class="fs-4 bi-wallet2"></i> &nbsp;Bevétel hozzáadása&nbsp;</span>
+                <ul class="nav nav-pills flex-row flex-md-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100 justify-content-center justify-content-md-start" id="menu">
+                    <li data-aos="fade-down" data-aos-duration="1500" class="nav-item">
+                        <a routerLink='/home' class="nav-link">
+                            <i class="fs-4 bi-house"></i>
+                            <span class="ms-1 d-none d-sm-inline nav-item-anim">Kezdőlap</span>
+                        </a>
+                    </li>  
+                    <li data-aos="fade-down" data-aos-duration="1500" class="nav-item">
+                        <a (click)="jovedelemKategoriakLekeres()" href="#" data-bs-toggle="modal" data-bs-target="#addIncome" class="nav-link">
+                            <i class="fs-4 bi-wallet2"></i>
+                            <span class="ms-1 d-none d-sm-inline nav-item-anim">Bevétel hozzáadása</span>
                         </a>
                     </li>
-                    <li>
-                        <a  href="#" data-bs-toggle="modal" data-bs-target="#addExpense" class="nav-link px-0 align-middle">
-                          <span class="ms-1 d-none d-sm-inline nav-item-anim"><i class="fs-4 bi-cash-coin"></i> &nbsp;Kiadás hozzáadása&nbsp;</span> 
+                    <li data-aos="fade-down" data-aos-duration="1500" class="nav-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#addExpense" class="nav-link">
+                            <i class="fs-4 bi-cash-coin"></i>
+                            <span class="ms-1 d-none d-sm-inline nav-item-anim">Kiadás hozzáadása</span>
                         </a>
-                       
                     </li>
-                        </ul>
-                <hr>
-                <div class="dropdown">
+                </ul>
+                <hr class="w-100">
+                <div data-aos="fade-down" data-aos-duration="1500" class="dropdown w-100">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{user.profilkepUrl}}" alt="{{user.vezeteknev}} {{user.keresztnev}} profilképe" title="{{user.vezeteknev}} {{user.keresztnev}} profilképe" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">&nbsp;<b>{{user.vezeteknev}} {{user.keresztnev}}</b></span>
+                        <img src="{{user.profilkepUrl}}" alt="{{user.vezeteknev}} {{user.keresztnev}} profilképe" class="rounded-circle me-2" width="30" height="30">
+                        <span class="d-none d-sm-inline"><b>{{user.vezeteknev}} {{user.keresztnev}}</b></span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <ul data-aos="fade-down" data-aos-duration="800" class="dropdown-menu dropdown-menu-dark text-small shadow">
                         <li><a class="dropdown-item" (click)="notWorking()">Profil megtekintése</a></li>
                         <li><a class="dropdown-item" (click)="notWorking()">Beállítások</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" (click)="logout()">Kijelentkezés</a></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3 main-content">
+            <div class="container-fluid px-5 py-4">
+                <div class="row g-3 mb-4">
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100" data-bs-toggle="modal" data-bs-target="#jovedelemModal">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Havi jövedelem</h4>
+                                <h4 class="text-success">{{havijovedelmek()}} HUF</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100" data-bs-toggle="modal" data-bs-target="#kiadasokModal">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Havi kiadások</h4>
+                                <h4 class="text-danger">-{{havikiadasok()}} HUF</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Havi összes</h4>
+                                <h4 *ngIf="haviosszes() > 0; else negative" class="text-success">{{haviosszes()}} HUF</h4>
+                                <ng-template #negative>
+                                    <h4 class="text-danger">
+                                      {{haviosszes()}} HUF</h4>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-12 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <app-graph class="responsive-chart"></app-graph>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <app-polararea class="responsive-chart"></app-polararea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <app-piechart class="responsive-chart"></app-piechart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-  <!--IDE A CONTENT-->
-<div class="container">
-  <div class="row">
-  <div class="col-3">
-  </div>
-  <div class="content col-5 mt-3">
-    <div class="information mt-3 mb-3">
-      <div class="col-4 m-3 adatDoboz" data-bs-toggle="modal" data-bs-target="#jovedelemModal">
-          <h4>Havi jövedelem</h4>
-          <h4 class="text-success">{{havijovedelmek()}} HUF</h4>
-      </div>
-      <div class="col-4 m-3 adatDoboz" data-bs-toggle="modal" data-bs-target="#kiadasokModal">
-          <h4 >Havi kiadások</h4>
-          <h4 class="text-danger">-{{havikiadasok()}} HUF</h4>
-      </div>
-      <div class="col-4 m-3 adatDoboz">
-        <h4>Havi összes</h4>
-        <h4 *ngIf="haviosszes() > 0; else negative" class="text-success">{{haviosszes()}} HUF</h4>
-
-        <ng-template #negative>
-          <h4 class="text-danger">{{haviosszes()}} HUF</h4>
-        </ng-template>
-      </div>
-    </div>
-  </div>
-  </div>
-  <div class="row">
-     <div class="row">
-          <div class="col-2"></div>
-          <div class="col-10 mb-3 d-flex justify-content-center">
-              <app-graph class="responsive-chart"></app-graph>
-            </div>
-      </div>
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-10 mb-3 d-flex justify-content-center">
-          <app-polararea class="responsive-chart"></app-polararea>
-        </div>
-        <div class="col-10 mb-3 d-flex justify-content-center">
-          <app-piechart></app-piechart>
-        </div>
-      </div>
-  </div>
-  </div>
-
-
-  
-  
-
-
-  <!--CONTENT EDDIG-->
-
 <!-- Bevétel hozzáadása modal element -->
-  <div class="modal fade incomeModal" id="addIncome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Bevétel hozzáadása</h1>
-          <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p style="display: flex; justify-content: space-between;"> <span class="bi bi-list-check text-light">&nbsp;Bevétel típusa: </span>
-           
-            <select name="expenseCategory" id="incomeCategory"  [(ngModel)]="jovedelemTipus">
-              <option value="Válassz!">Válassz!</option>
-              <option *ngFor="let kategoria of jovedelemkategoriatomb" [value]="kategoria.kategoriaID">{{kategoria.jovedelemKategoria}}</option>
-              
-            </select>
-          </p>
-          <p style="display: flex; justify-content: space-between;">  <span class="bi bi-cash text-light">&nbsp;Érték: </span> <input type="number" name="incomeHUF" id="incomeHUF" placeholder="Érték Forintban"  [(ngModel)]="jovedelemErtek"></p>
-          <p style="display: flex; justify-content: space-between;"> <span class="bi bi-calendar-date text-light">&nbsp;Bevétel dátuma: </span> <input type="date" name="incomeDate" id="incomeDate"  [(ngModel)]="jovedelemDatum"></p>
-  
-  
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Mégsem</button>
-          <button type="button" class="btn btn-success" (click)="jovedelemHozzadasa()" data-bs-dismiss="modal">Bevétel mentése</button>
-        </div>
+<div class="modal fade incomeModal" id="addIncome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Bevétel hozzáadása</h1>
+        <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p style="display: flex; justify-content: space-between;"> <span class="bi bi-list-check text-light">&nbsp;Bevétel típusa: </span>
+         
+          <select name="expenseCategory" id="incomeCategory"  [(ngModel)]="jovedelemTipus">
+            <option value="Válassz!">Válassz!</option>
+            <option *ngFor="let kategoria of jovedelemkategoriatomb" [value]="kategoria.kategoriaID">{{kategoria.jovedelemKategoria}}</option>
+            
+          </select>
+        </p>
+        <p style="display: flex; justify-content: space-between;">  <span class="bi bi-cash text-light">&nbsp;Érték: </span> <input type="number" name="incomeHUF" id="incomeHUF" placeholder="Érték Forintban"  [(ngModel)]="jovedelemErtek"></p>
+        <p style="display: flex; justify-content: space-between;"> <span class="bi bi-calendar-date text-light">&nbsp;Bevétel dátuma: </span> <input type="date" name="incomeDate" id="incomeDate"  [(ngModel)]="jovedelemDatum"></p>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Mégsem</button>
+        <button type="button" class="btn btn-success" (click)="jovedelemHozzadasa()" data-bs-dismiss="modal">Bevétel mentése</button>
       </div>
     </div>
   </div>
+</div>
 
 
-    
+  
 
     <!-- Kiadás hozzáadása modal element -->
     <div class="modal fade expenseModal" id="addExpense" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

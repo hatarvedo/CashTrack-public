@@ -20,6 +20,20 @@ export class PiechartComponent {
  
  // Pie
  public pieChartOptions: ChartOptions<'pie'> = {
+  plugins: {
+    title: {
+      text: 'Bevételek kategóriák szerint',
+      display: true,
+      color: 'white',
+      font: {
+        size: 20,
+        weight: 'bold',
+        family: 'Arial',
+        lineHeight: 1.2,
+        
+      }
+    }
+  },
   responsive: true,
 };
 public pieChartLabels: string[] = this.jovedelemtomb().map((jovedelem:any) => jovedelem.kategoria?.jovedelemKategoria || '[]');

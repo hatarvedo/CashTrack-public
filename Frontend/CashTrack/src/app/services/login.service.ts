@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,14 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(email: string, jelszo: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/email/${email}`);
+    return this.http.get(`${this.apiUrl}/email/${email}`).pipe(
+      map((response: any) => {
+        if (response && response.jelszo === jelszo) {
+          return response;
+        }
+        return null;
+      })
+    );
   }
   logout(): void {
     localStorage.removeItem('felhasznalo');
