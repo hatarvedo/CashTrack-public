@@ -180,7 +180,10 @@ currentYear: number = 0;
       }
 
       // Adatok inicializálása
-      this.initializeData();
+      setTimeout(() => {
+        this.initializeData();
+      }, 500);
+      
       this.grafikonFrissitese();
       AOS.init();
     }

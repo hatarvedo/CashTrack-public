@@ -12,4 +12,7 @@ export class KapcsolatComponent {
     ngOnInit(): void {
         AOS.init();
     }
+    sendEmail(){
+        alert("Email sikeresen elküldve, hamarosan válaszolunk!");
+    }
 }

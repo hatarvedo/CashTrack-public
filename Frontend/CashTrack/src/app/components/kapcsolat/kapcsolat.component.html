@@ -36,16 +36,23 @@
 
       <div class="container mt-5 textCenter">
           <h3>Kérdésed van? Kérdezz bátran!</h3>
-          <form action="vendor/sendEmail.php" class="mt-3">
-              <input type="text" name="nev" id="nev" placeholder="Név" class="mt-2">
+          <!-- <form action="https://formspree.io/f/mwplgjja" method="POST"> -->
+            <form action="https://formsubmit.co/martocean.mate@szikszi-ozd.hu" method="POST" >
+            
+              <input type="text" name="name" id="nev" placeholder="Név" class="mt-2" required>
               <br>
-              <input type="text" name="email" id="email" placeholder="E-mail" class="mt-2">
+              <input type="text" name="email" id="email" placeholder="E-mail" class="mt-2" required>
               <br>
-              <input type="text" name="targy" id="targy" placeholder="Tárgy" class="mt-2">
+              <input type="text" name="Subject" id="targy" placeholder="Tárgy" class="mt-2" required>
               <br>
-              <input type="text" name="uzenet" id="uzenet" placeholder="Üzenet" class="mt-2 uzenet">
+             <!--  <input type="hidden" name="_subject" value="New submission!">
+              <br> -->
+              <input type="text" name="message" id="uzenet" placeholder="Üzenet" class="mt-2 uzenet" required>
               <br>
-              <button class="gomb mt-3 mb-5" type="submit">Küldés</button>
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="http://localhost:4200/kapcsolat">
+              
+              <button class="gomb mt-3 mb-5" type="submit"(click)="sendEmail()">Küldés</button>
           </form>
       </div>
 

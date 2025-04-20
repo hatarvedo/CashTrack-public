@@ -11,14 +11,8 @@ export class JovedelemManagerService {
   private apiUrlJovedelemKategoriak = 'http://127.0.0.1:8000/api/jovedelemkategoriak';
   private apiUrlJovedelmek = 'http://127.0.0.1:8000/api/jovedelmek';
 
-  constructor(private http: HttpClient) 
-  {
-    window.addEventListener('storage', (event) => {
-      if (event.key === this.jovedelemkulcs) {
-        this.jovedelemFigyeles.next(this.jovedelemVizsgalatLekerese());
-      }
-    });
-  }
+  constructor(private http: HttpClient) {}
+  
 
 jovedelemAdat = signal<Jovedelem[]>([])
   jovedelemkategoriak: any[] =[];  
@@ -46,29 +40,27 @@ jovedelemAdatok: Jovedelem[] = [];
     const user = JSON.parse(localStorage.getItem('felhasznalo') || '{}');
     this.http.get(`${this.apiUrlJovedelmek}/felhasznalo/${user.felhasznaloID}`).subscribe((data: any) => {
       this.jovedelemAdatok = data;
-      console.log('jovedelemek LEKERESEJSON',this.jovedelemAdatok);
       this.jovedelemAdatok.sort((a, b) => new Date(b.bevetelDatum).getTime() - new Date(a.bevetelDatum).getTime());
       
     })
     
     return this.jovedelemAdatok;
   }
-  //Observable
+
   private jovedelemkulcs = "jovedelmek";
-  private jovedelemFigyeles = new BehaviorSubject<any[]>(this.jovedelemVizsgalatLekerese());
-  jovedelem$ = this.jovedelemFigyeles.asObservable();
+  
   private jovedelemVizsgalatLekerese(): any[] {
     return JSON.parse(localStorage.getItem(this.jovedelemkulcs) || '[]');
   }
   jovedelemVizsgalatLekereseJSON(): Jovedelem[] {
     return this.jovedelemVizsgalatLekerese();
   }
-  JovedelemFeltoltes(jovedelemAdatok:{felhasznaloID:number, bevetelHUF: number, bevetelDatum: string,kategoriaID: number}):Observable<any>{
+  JovedelemFeltoltes(jovedelemAdatok:{}):Observable<any>{
     return this.http.post(`${this.apiUrlJovedelmek}`, jovedelemAdatok);
 }
 jovdelemekFrissitese(ujJovedelmek: any[]) {
   localStorage.setItem(this.jovedelemkulcs, JSON.stringify(ujJovedelmek));
-  this.jovedelemFigyeles.next(ujJovedelmek); 
+  
   this.jovedelemAdat.update(jovedelemAdat => [...jovedelemAdat, ...ujJovedelmek]);
 }
 
