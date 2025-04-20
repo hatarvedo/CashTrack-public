@@ -26,25 +26,11 @@ export class KiadasManagerService {
     const user = JSON.parse(localStorage.getItem('felhasznalo') || '{}');
     this.http.get(`${this.apiUrl}/felhasznalo/${user.felhasznaloID}`).subscribe((data: any) => {
       this.kiadasokOsszes = data;
-      this.kiadasKategoriakLekerese()
-      this.kiadasokOsszes.forEach((element : any) => {
-        this.kiadaskategoriatomb.forEach((kiadasKategoriak: any) => {
-          if(element.kategoriaID == kiadasKategoriak.kategoriaID){
-            element.kategoriaNev = kiadasKategoriak.kiadasKategoria;
-          }
-        });
-      });
       this.kiadasokOsszes.sort((a, b) => new Date(b.kiadasDatum).getTime() - new Date(a.kiadasDatum).getTime());
       localStorage.setItem('kiadasok', JSON.stringify(this.kiadasokOsszes))
-      setTimeout(() => {
       this.kiadasAdat.set(this.kiadasokOsszes);
-      console.log('Service Signal Frissitve default', this.kiadasAdat());
-      }
-      , 1000);
-    });
-    
-
-    return this.kiadasokOsszes;
+  }
+    )
   }
 
 
@@ -81,6 +67,7 @@ export class KiadasManagerService {
     console.log(JSON.parse(localStorage.getItem(this.kiadaskulcs) || '[]'));
     return this.http.delete(`${this.apiUrl}/${kiadasID}`).subscribe(Response => {
       console.log(Response);
+      this.kiadOsszeadas();
     });
   }
 

@@ -23,13 +23,15 @@ export class IncomelistComponent {
    
   ngOnInit(): void {
     console.log('IncomelistComponent initialized');
-    
-    this.jovedelemService.jovedelemLekeres();
+    setTimeout(() => {
+      this.jovedelemService.jovedelemLekeres();
     this.jovedelemekFelugyelet = JSON.parse(localStorage.getItem('jovedelmek')|| '[]' );
   
     console.log(this.jovedelemekFelugyelet);
     this.jovedelmek =JSON.parse(localStorage.getItem('jovedelmek')|| '[]' );
     console.log("jovedelemJSON", this.jovedelmek)
+    }, 400);
+    
    
   }
   @ViewChild(DashboardComponent) dashboard: DashboardComponent | undefined;
@@ -38,9 +40,9 @@ export class IncomelistComponent {
     setTimeout(() => {
       this.ngOnInit();
       this.dashboard?.ngOnInit();
-      this.jovedelemService.jovedelemLekeres();
       
-    }, 2000);
+      
+    }, 100);
     
     
 

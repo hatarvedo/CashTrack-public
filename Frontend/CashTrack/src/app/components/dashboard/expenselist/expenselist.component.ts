@@ -1,8 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal, ViewChild } from '@angular/core';
 
 import { NgFor } from '@angular/common';
 
 import { KiadasManagerService } from '../../../services/kiadas-manager.service';
+import { DashboardComponent } from '../dashboard.component';
 
 @Component({
   selector: 'app-expenselist',
@@ -19,24 +20,27 @@ export class ExpenselistComponent {
 
 kiadasokFelugyelet:any[] = []
 
-  
+kiadasSignal: any;
 kiadaskategoriatomb: any[] =[];
 ngOnInit(): void {
   this.kiadasService.kiadasokLekeres()
-  /* this.kiadasService.kiadasokKategoriaNeve(); */
-  this.kiadasokFelugyelet = JSON.parse(localStorage.getItem('kiadasok')|| '[]' );
-  console.log(this.kiadasokFelugyelet);
-  this.kiadasService.kiadasok$.subscribe((data) => {
-    this.kiadasok = data;
-  }); 
+  setTimeout(() => {
+    
+    this.kiadasok = JSON.parse(localStorage.getItem('kiadasok')|| '[]' );
+    console.log("kiadasJSON", this.kiadasok)
+  }, 1000);
+  
 }
-
+  @ViewChild(DashboardComponent) dashboard: DashboardComponent | undefined;
   kiadasTorles(index: number,kiadasID: number) {
     this.kiadasService.kiadasTorles(index,kiadasID);
     setTimeout(() => {
-      this.ngOnInit();
+      
       this.kiadasService.kiadasokLekeres();
-    }, 2000);
+      this.ngOnInit();
+      this.kiadasok = JSON.parse(localStorage.getItem('kiadasok')|| '[]' );
+      
+    }, 500);
     
   }
 }

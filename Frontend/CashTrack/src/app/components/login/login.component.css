@@ -178,6 +178,13 @@
   transition: all 0.2s ease-in-out;
   color: #ffffff;
 }
+#email:is(:-webkit-autofill), #password:is(:-webkit-autofill,), #vezeteknev:is(:-webkit-autofill, :autofill), #keresztnev:is(:-webkit-autofill, :autofill){
+ 
+  transition: all 0.2s ease-in-out;
+  color: #ffffff !important; 
+  -webkit-box-shadow: 0 0 0px 1000px rgba(12, 12, 12) inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
 
 svg path {
   fill: transparent;

@@ -127,11 +127,13 @@ currentYear: number = 0;
   @ViewChild(GraphComponent) graph: GraphComponent | undefined;
   @ViewChild(PiechartComponent) piechart: PiechartComponent | undefined;
   @ViewChild(IncomelistComponent) incomelist: IncomelistComponent | undefined;
+  @ViewChild(ExpenselistComponent) expenselist: ExpenselistComponent | undefined;
   grafikonFrissitese(){
     this.polarareachart?.ngAfterViewInit();
     this.graph?.ngOnInit();
     this.piechart?.ngAfterViewInit();
     this.incomelist?.ngOnInit();
+    this.expenselist?.ngOnInit();
 
    
   }
@@ -179,6 +181,7 @@ currentYear: number = 0;
 
       // Adatok inicializálása
       this.initializeData();
+      this.grafikonFrissitese();
       AOS.init();
     }
 
@@ -188,6 +191,7 @@ currentYear: number = 0;
       this.jovedelemService.KategoriakLekerese();
       this.jovedelemKategoriakLekeres();
       
+      this.kiadasService.kiadasokReturn();
       console.log('kiadaskategoriak:', this.kiadaskategoriatomb);
       
       this.jovedelemService.jovedelemLekeres();
@@ -202,50 +206,18 @@ currentYear: number = 0;
     //Jövedelem havi kezelése
   jovedelemHaviTemp : number = 0;
   havijovedelmek = computed(() => this.jovedelemService.szamolas());   
-  
-/*   HaviJovedelemFrissitese(){
-    this.jovedelemFelugyelet = this.jovedelemService.jovedelemLekeresJSON();
-    console.log('jovedelem havi frissitese',this.jovedelemFelugyelet);
-   
-    this.jovedelemHaviTemp = 0;
-    this.jovedelemFelugyelet.forEach((element:any) => {
-      this.jovedelemHaviTemp = this.jovedelemHaviTemp + element.bevetelHUF
-    });
-    this.HaviOsszesFrissitese(); 
-    return this.havijovedelmek.update(count => this.jovedelemHaviTemp)
-  } */
-    
     HaviJovedelemFrissitese(){
-
-      /* this.jovedelmek = JSON.parse(localStorage.getItem('jovedelmek') || '[]');
-      this.jovedelemHaviTemp = 0;
-      this.jovedelmek.forEach((element:any) => {
-        this.jovedelemHaviTemp = this.jovedelemHaviTemp + element.bevetelHUF
-      });
-      this.HaviOsszesFrissitese(); 
-      return this.havijovedelmek.update(count => this.jovedelemHaviTemp) */
       this.jovedelemService.jovOsszeadas()
-      
       console.log('havijovdelemek signal',this.havijovedelmek())
      
     }
- 
-  
   //Kiadások havi kezelése
   havikiadasokSzamolo:number = 0;
   havikiadasok =computed(() => this.kiadasService.szamolas()); 
   
   
   HaviKiadasokFrissitese(){
-    /* this.kiadasok = JSON.parse(localStorage.getItem('kiadasok') || '[]');
-    this.havikiadasokSzamolo = 0;
-    this.kiadasok.forEach((element:any) => {
-      this.havikiadasokSzamolo = this.havikiadasokSzamolo + element.kiadasHUF;
-    });
-    this.HaviOsszesFrissitese();
-    return this.havikiadasok.update(count => this.havikiadasokSzamolo) */
     this.kiadasService.kiadOsszeadas()
-    
   }
 
   haviosszes = computed(() => this.havijovedelmek() - this.havikiadasok());   ;
@@ -256,6 +228,7 @@ currentYear: number = 0;
     logout(): void {
       this.authService.logout();
       this.router.navigate(['/home']);
+      localStorage.clear();
     }
   
     notWorking(): void{

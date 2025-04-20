@@ -5,20 +5,20 @@
                 <a href="/" class="d-flex align-items-center pb-3 me-md-auto text-white text-decoration-none">
                     <span data-aos="fade-down" data-aos-duration="1500" class="fs-5 d-none d-sm-inline">Üdvözlünk, {{user.keresztnev}}</span>
                 </a>
-                <ul class="nav nav-pills flex-row flex-md-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100 justify-content-center justify-content-md-start" id="menu">
-                    <li data-aos="fade-down" data-aos-duration="1500" class="nav-item">
+                <ul data-aos="fade-down" data-aos-duration="1500" class="nav nav-pills flex-row flex-md-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100 justify-content-center justify-content-md-start" id="menu">
+                    <li  class="nav-item">
                         <a routerLink='/home' class="nav-link">
                             <i class="fs-4 bi-house"></i>
                             <span class="ms-1 d-none d-sm-inline nav-item-anim">Kezdőlap</span>
                         </a>
                     </li>  
-                    <li data-aos="fade-down" data-aos-duration="1500" class="nav-item">
+                    <li  class="nav-item">
                         <a (click)="jovedelemKategoriakLekeres()" href="#" data-bs-toggle="modal" data-bs-target="#addIncome" class="nav-link">
                             <i class="fs-4 bi-wallet2"></i>
                             <span class="ms-1 d-none d-sm-inline nav-item-anim">Bevétel hozzáadása</span>
                         </a>
                     </li>
-                    <li data-aos="fade-down" data-aos-duration="1500" class="nav-item">
+                    <li  class="nav-item">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#addExpense" class="nav-link">
                             <i class="fs-4 bi-cash-coin"></i>
                             <span class="ms-1 d-none d-sm-inline nav-item-anim">Kiadás hozzáadása</span>
@@ -46,7 +46,7 @@
                     <div class="col-12 col-md-4">
                         <div class="card h-100" data-bs-toggle="modal" data-bs-target="#jovedelemModal">
                             <div class="card-body text-center">
-                                <h4 class="card-title">Havi jövedelem</h4>
+                                <h4 class="card-title">Jövedelem</h4>
                                 <h4 class="text-success">{{havijovedelmek()}} HUF</h4>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                     <div class="col-12 col-md-4">
                         <div class="card h-100" data-bs-toggle="modal" data-bs-target="#kiadasokModal">
                             <div class="card-body text-center">
-                                <h4 class="card-title">Havi kiadások</h4>
+                                <h4 class="card-title">Kiadások</h4>
                                 <h4 class="text-danger">-{{havikiadasok()}} HUF</h4>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                     <div class="col-12 col-md-4">
                         <div class="card h-100">
                             <div class="card-body text-center">
-                                <h4 class="card-title">Havi összes</h4>
+                                <h4 class="card-title">Összes</h4>
                                 <h4 *ngIf="haviosszes() > 0; else negative" class="text-success">{{haviosszes()}} HUF</h4>
                                 <ng-template #negative>
                                     <h4 class="text-danger">
@@ -141,7 +141,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Kiadás hozzáadása</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
           </div>
           <form>
           <div class="modal-body">
@@ -157,7 +157,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" >Mégsem</button>
-            <button type="button" class="btn btn-success" (click)="kiadasHozzaadas()">Kiadás mentése</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="kiadasHozzaadas()">Kiadás mentése</button>
           </div>
         </form>
         </div>
@@ -171,7 +171,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Összes jövedelem</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="ngOnInit()" ></button>
       </div>
       <div class="modal-body">
         <app-incomelist></app-incomelist>
@@ -187,7 +187,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Összes kiadás</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="ngOnInit()"  ></button>
       </div>
       <div class="modal-body">
         <app-expenselist></app-expenselist>
