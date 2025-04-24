@@ -178,6 +178,10 @@ currentYear: number = 0;
         this.router.navigate(['/login']);
         return;
       }
+      this.kiadasService.kiadasKategoriakLekerese();
+      this.jovedelemService.KategoriakLekerese();
+      this.kiadasService.kiadasokReturn();
+      this.jovedelemService.jovedelemLekeres();
 
       // Adatok inicializálása
       setTimeout(() => {
@@ -190,14 +194,10 @@ currentYear: number = 0;
 
     private initializeData(): void {
       this.authService.login();
-      this.kiadasService.kiadasKategoriakLekerese();
-      this.jovedelemService.KategoriakLekerese();
-      this.jovedelemKategoriakLekeres();
       
-      this.kiadasService.kiadasokReturn();
-      console.log('kiadaskategoriak:', this.kiadaskategoriatomb);
       
-      this.jovedelemService.jovedelemLekeres();
+      
+      
       
       // Adatok betöltése
       this.HaviJovedelemFrissitese();
