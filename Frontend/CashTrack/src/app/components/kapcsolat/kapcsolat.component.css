@@ -18,8 +18,49 @@ input{
 
 input::placeholder{
     text-align: center;
+    color: white;
 }
 
 .uzenet{
     height: 200px;
+}
+
+.reportDiv{
+     background: linear-gradient(rgba(12, 12, 12, 0.2), rgba(43, 42, 42, 0.1));
+     border-radius: 15px;
+}
+
+.custom-width {
+    max-width: 600px; /* Állítsd be a kívánt szélességet */
+    margin: 0 auto; /* Középre igazítás */
+}
+
+.report input{
+    border-radius: 10px;
+    border: 2px solid rgb(58, 58, 58);
+    background-color: rgba(131, 131, 131, .7);
+    color: white;
+}
+
+.report input:focus{
+    outline: none;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgba(131, 131, 131, .9);
+    transition: all 0.3s ease-in-out;   
+}
+
+.report button{
+    background-color: rgb(4, 68, 4);
+    color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(2, 43, 2);
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.report button:hover{
+    outline: none;
+    border: 2px solid rgb(255, 255, 255);
+    transition: all 0.2s ease-in-out;  
 }

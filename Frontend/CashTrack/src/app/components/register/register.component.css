@@ -268,3 +268,19 @@ h3{
   font-weight: bold;
   transition: 0.3s all ease-in-out;
 }
+
+.question button{
+  background-color: rgb(4, 68, 4);
+  color: white;
+  border-radius: 10px;
+  border: 2px solid rgb(2, 43, 2);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.question button:hover{
+  outline: none;
+  border: 2px solid rgb(255, 255, 255);
+  transition: all 0.2s ease-in-out;
+}
