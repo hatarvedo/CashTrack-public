@@ -9,6 +9,8 @@ import { RouterModule, Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { RegisterService } from '../../services/register.service';
 import AOS from 'aos';
+import { KiadasManagerService } from '../../services/kiadas-manager.service';
+import { JovedelemManagerService } from '../../services/jovedelem-manager.service';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class LoginComponent {
   rememberMe: boolean = false;
 
   
-  constructor( private http: HttpClient,private router: Router,  private loginService: LoginService, private authService:AuthService, private regiserService: RegisterService) { }
+  constructor( private http: HttpClient,private router: Router,  private loginService: LoginService, private authService:AuthService, private regiserService: RegisterService,private kiadasService: KiadasManagerService, private jovedelemService: JovedelemManagerService) { }
 
   ngOnInit(): void {
     AOS.init();
@@ -46,11 +48,14 @@ export class LoginComponent {
           console.log('Felhasználó adatai: ', response);
           this.authService.login();
           this.authService.isLoggedIn.set(true);
+          this.kiadasService.kiadasokLekeres();
+          this.jovedelemService.jovedelemLekeres();
+
           
           // Várunk egy kicsit, hogy a localStorage frissüljön
           setTimeout(() => {
             this.router.navigate(['/dashboard']);
-          }, 100);
+          }, 300);
         } else {
           console.log('Sikertelen bejelentkezés, hibás email vagy jelszó.');
           alert('Sikertelen bejelentkezés, hibás email vagy jelszó.');
