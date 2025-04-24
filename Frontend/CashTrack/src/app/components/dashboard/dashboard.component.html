@@ -1,26 +1,39 @@
 <div class="container-fluid">
-    <div data-aos="fade-down" data-aos-duration="1500" class="row">
-        <div data-aos="fade-down" data-aos-duration="1500" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="sidebar">
-            <div data-aos="fade-down" data-aos-duration="1500" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
+    <div  class="row">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="sidebar">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
                 <a href="/" class="d-flex align-items-center pb-3 me-md-auto text-white text-decoration-none">
                     <span data-aos="fade-down" data-aos-duration="1500" class="fs-5 d-none d-sm-inline">Üdvözlünk, {{user.keresztnev}}</span>
                 </a>
-                <ul data-aos="fade-down" data-aos-duration="1500" class="nav nav-pills flex-row flex-md-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100 justify-content-center justify-content-md-start" id="menu">
-                    <li  class="nav-item">
+                <ul class="nav nav-pills flex-row flex-md-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100 justify-content-center justify-content-md-start" id="menu">
+                    <li class="nav-item">
                         <a routerLink='/home' class="nav-link">
-                            <i class="fs-4 bi-house"></i>
+                            <i class="fs-4 me-1 bi-house"></i>
                             <span class="ms-1 d-none d-sm-inline nav-item-anim">Kezdőlap</span>
                         </a>
-                    </li>  
+                    </li>
+                    <li class="nav-item">
+                      <a routerLink='/rolunk' class="nav-link">
+                          <i class="fs-4 me-1 bi-people"></i>
+                          <span class="ms-1 d-none d-sm-inline nav-item-anim">Rólunk</span>
+                      </a>
+                  </li> 
+                  <li class="nav-item">
+                      <a routerLink='/kapcsolat' class="nav-link">
+                          <i class="fs-4 me-1 bi-info-circle"></i>
+                          <span class="ms-1 d-none d-sm-inline nav-item-anim">Kapcsolat</span>
+                      </a>
+                  </li> 
+                  <hr class="w-100">
                     <li  class="nav-item">
                         <a (click)="jovedelemKategoriakLekeres()" href="#" data-bs-toggle="modal" data-bs-target="#addIncome" class="nav-link">
-                            <i class="fs-4 bi-wallet2"></i>
+                            <i class="fs-4 me-1 bi-wallet2"></i>
                             <span class="ms-1 d-none d-sm-inline nav-item-anim">Bevétel hozzáadása</span>
                         </a>
                     </li>
                     <li  class="nav-item">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#addExpense" class="nav-link">
-                            <i class="fs-4 bi-cash-coin"></i>
+                            <i class="fs-4 me-1 bi-cash-coin"></i>
                             <span class="ms-1 d-none d-sm-inline nav-item-anim">Kiadás hozzáadása</span>
                         </a>
                     </li>
@@ -28,7 +41,7 @@
                 <hr class="w-100">
                 <div data-aos="fade-down" data-aos-duration="1500" class="dropdown w-100">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{user.profilkepUrl}}" alt="{{user.vezeteknev}} {{user.keresztnev}} profilképe" class="rounded-circle me-2" width="30" height="30">
+                        <img src="{{user.profilkepUrl}}" alt="{{user.vezeteknev}} {{user.keresztnev}} profilképe" title="{{user.vezeteknev}} {{user.keresztnev}} profilképe" class="rounded-circle me-2" width="30" height="30">
                         <span class="d-none d-sm-inline"><b>{{user.vezeteknev}} {{user.keresztnev}}</b></span>
                     </a>
                     <ul data-aos="fade-down" data-aos-duration="800" class="dropdown-menu dropdown-menu-dark text-small shadow">

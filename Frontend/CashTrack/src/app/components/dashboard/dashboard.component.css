@@ -2,6 +2,7 @@
     color: white;
 }
 
+/* filepath: /c:/Users/marto/Documents/GitHub/CashTrack/CashTrack/src/app/components/dashboard/dashboard.component.scss */
 #sidebar {
     min-height: 100vh;
     position: fixed;
@@ -105,10 +106,14 @@ hr {
 }
 
 .nav-item-anim:hover {
+    
+    text-align: center;
     background-color: rgba(143, 143, 143, 0.6);
     border-radius: 10px;
     transition: 0.2s ease-in-out;
     padding: 5px;
+    padding-right: 90px;
+    
 }
 
 .dropdown-menu a:hover {
@@ -175,6 +180,8 @@ hr {
         z-index: 100;
         border: none;
     }
+
+    
 
     .main-content {
         margin-left: 0;
