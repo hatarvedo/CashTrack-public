@@ -90,11 +90,8 @@ currentYear: number = 0;
         this.HaviJovedelemFrissitese();
         this.HaviOsszesFrissitese(); 
         setTimeout(() => {
-          this.incomelist?.ngOnInit();
-        }, 700);
-        setTimeout(() => {
           this.grafikonFrissitese();
-        }, 2000);
+        }, 1000);
         
         
       });
@@ -158,7 +155,7 @@ currentYear: number = 0;
           this.HaviOsszesFrissitese(); 
           setTimeout(() => {
             this.grafikonFrissitese();
-          }, 2000);
+          }, 1000);
           
           
         }

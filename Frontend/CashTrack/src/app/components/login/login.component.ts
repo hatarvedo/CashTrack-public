@@ -46,6 +46,7 @@ export class LoginComponent {
 
           localStorage.setItem('felhasznalo', JSON.stringify(response));
           console.log('Felhasználó adatai: ', response);
+          alert('Sikeres bejelentkezés!');
           this.authService.login();
           this.authService.isLoggedIn.set(true);
           this.kiadasService.kiadasokLekeres();
