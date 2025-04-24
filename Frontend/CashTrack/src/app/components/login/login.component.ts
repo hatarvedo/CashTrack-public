@@ -50,12 +50,14 @@ export class LoginComponent {
           this.authService.isLoggedIn.set(true);
           this.kiadasService.kiadasokLekeres();
           this.jovedelemService.jovedelemLekeres();
+          this.kiadasService.kiadasKategoriakLekerese();
+          this.jovedelemService.KategoriakLekerese();
 
           
           // Várunk egy kicsit, hogy a localStorage frissüljön
           setTimeout(() => {
             this.router.navigate(['/dashboard']);
-          }, 300);
+          }, 2000);
         } else {
           console.log('Sikertelen bejelentkezés, hibás email vagy jelszó.');
           alert('Sikertelen bejelentkezés, hibás email vagy jelszó.');
