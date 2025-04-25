@@ -10,7 +10,6 @@ import AOS from 'aos';
 })
 export class AboutComponent implements OnInit {
     ngOnInit(): void {
-        // AOS inicializálása a megfelelő beállításokkal
         AOS.init();
     }
 }

@@ -1,11 +1,9 @@
 <app-header></app-header>
-
 <div class="container belepesFelulet">
     <div class="row">
         <div class="col-3">
             <!--BLANK-->
         </div>
-
         <div data-aos="fade-down" data-aos-duration="2500" class="col-6 login">
             <div class="logo">
                 <div class="banner">
@@ -35,21 +33,12 @@
                 <label for="exampleInputPassword1 " class="form-label toLeft">Jelszó</label>
                 <input type="password" [(ngModel)]="jelszo" name="jelszo" class="form-control" id="password" placeholder="Jelszó">
             </div>
-           <!--  <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input"  [(ngModel)]="rememberMe" name="jegyezzmeg" id="remember">
-                <label class="form-check-label" for="exampleCheck1" >Jegyezz meg</label>
-            </div> -->
-
             <div class="mb-3 centered">
                 <button type="submit" class="loginButton">Bejelentkezés</button>
-              
             </div>
         </form>
-        <p class="question"><b>Nincs még fiókod?</b> &nbsp; <button class="btn  btn-dark" (click)="RegisterRoute()">Regisztrálj!</button></p>
+            <p class="question"><b>Nincs még fiókod?</b> &nbsp; <button class="btn  btn-dark" (click)="RegisterRoute()">Regisztrálj!</button></p>
         </div>
-      
-        
-
         <div class="col-3">
              <!--BLANK-->
         </div>

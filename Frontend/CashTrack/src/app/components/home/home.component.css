@@ -25,48 +25,7 @@
 
   
 }
-/* svg path{
-    fill: transparent;
-    stroke: #fff;
-    stroke-width: 0.3;
-    stroke-dasharray: 450;
-    stroke-dashoffset: 450;
-    animation: textAnimation 3s ease-in-out 1 forwards;
-    animation-fill-mode: none;
 
-    
-}
- @keyframes textAnimation{
-    0%{
-        stroke-dashoffset: 450;
-    }
-    80%{
-        fill: transparent;
-    }
-   
-    100%{
-        fill: #fff;
-        stroke-dashoffset: 0;
-        opacity: 0%;
-    }
-  
-    
-} 
-
-.contentbox{
-    display: none;
-    animation: contentAnimation 0s ease in 1 forwards;
-}
-@keyframes contentAnimation{
-    0%{
-        display: none;
-    }
-    100%{
-        display: block;
-        animation-delay: 3s;
-    }
-}
- */
  svg path {
     fill: transparent;
     stroke: #fff;
@@ -118,8 +77,16 @@
     padding: 5px 10px;
     grid-column: 3/7;
 
+    background-color: rgb(4, 68, 4);
+    color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(2, 43, 2);
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
     
 }
+
 .spline-container{
   display: flex;
   justify-content: flex-end;

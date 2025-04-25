@@ -29,15 +29,12 @@ export class RegisterComponent {
       if(response){
         alert('Sikeres regisztráció');
         this.router.navigate(['/login']);
-        /* localStorage.setItem('felhasznalo',JSON.stringify(response)); */
-        
       }
       else{
         alert('Sikertelen regisztráció');
       }
     });
   }
-
   LoginRoute(): void {
     this.router.navigate(['/login']);
   }

@@ -93,18 +93,14 @@ ngAfterViewInit() {
 
 refreshChart() {
   setTimeout(() => {
-    
-  
   const jovedelmek= this.jovedelemtomb();
   console.log('refreshChart metodus',this.jovedelemtomb());
 
-  // Ha még nincsenek adatok, ne csináljunk semmit
   if (!jovedelmek || jovedelmek.length === 0) {
     console.log("Nincsenek adatok a charthoz.");
     return;
   }
 
-  // Kategória darabszámok összesítése
   const categoryCounts: { [key: string]: number } = {};
   jovedelmek.forEach(jovedelem => {
     if (jovedelem.kategoria && jovedelem.kategoria.jovedelemKategoria) {
@@ -113,24 +109,20 @@ refreshChart() {
     }
   });
 
-  // Ha nincs érvényes adat, ne frissítsünk
   if (Object.keys(categoryCounts).length === 0) {
     console.warn("Nem található érvényes kategória a chart frissítéséhez.");
     return;
   }
 
-  // Frissítjük a chart adatait
   this.pieChartLabels = Object.keys(categoryCounts);
   this.pieChartDatasets[0].data = Object.values(categoryCounts);
 
-  // Ha a chart még nem jött létre, ne próbáljuk frissíteni
   if (!this.chart) {
     console.warn("A chart még nem inicializálódott.");
     return;
   }
 
-  this.chart.update(); // Frissítés
+  this.chart.update(); 
 }, 2000);
 }
-
 }

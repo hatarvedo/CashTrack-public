@@ -8,13 +8,11 @@ export const authGuard = async () => {
   const authService = inject(AuthService);
 
   try {
-    // Ellenőrizzük, hogy van-e felhasználó a localStorage-ban
     const felhasznalo = localStorage.getItem('felhasznalo');
     if (!felhasznalo) {
       console.log('Nincs felhasználó a localStorage-ban');
       return router.parseUrl('/login');
     }
-    // Ellenőrizzük a bejelentkezési állapotot
     const isLoggedIn = await authService.isLoggedIn;
     if (!isLoggedIn) {
       console.log('Nincs bejelentkezve');
@@ -23,7 +21,8 @@ export const authGuard = async () => {
 
     console.log('Bejelentkezés sikeres, átirányítás a dashboard-ra');
     return true;
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Hiba az auth guard-ban:', error);
     return router.parseUrl('/login');
   }

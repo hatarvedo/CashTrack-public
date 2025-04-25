@@ -11,7 +11,7 @@ export class AuthService {
   isLoggedIn = signal(this.checkLoginStatus());
 
   constructor() {
-    // Figyeljük a localStorage változásait
+
     window.addEventListener('storage', () => {
       this.updateLoginStatus();
     });

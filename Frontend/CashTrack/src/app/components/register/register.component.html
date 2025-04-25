@@ -4,7 +4,6 @@
             <div class="col-3">
                 <!--BLANK-->
             </div>
-      
             <div class="col-6 login">
               <form  (ngSubmit)="regisztracio()">
                 <div class="logo">
@@ -21,17 +20,14 @@
                 <div class="mb-3">
                   <label class="form-label toLeft">Vezetéknév</label>
                   <input type="email" class="form-control" [(ngModel)]="vezeteknev" id="vezeteknev" aria-describedby="emailHelp" name="vezeteknev" placeholder="pl. Minta">
-      
                 </div>
                 <div class="mb-3">
                   <label class="form-label toLeft">Keresztnév</label>
                   <input type="email" class="form-control" [(ngModel)]="keresztnev" id="keresztnev" aria-describedby="emailHelp"  name="keresztnev" placeholder="pl. Ernő">
-      
                 </div>
                 <div class="mb-3">
                     <label class="form-label toLeft">E-mail</label>
-                    <input type="email" class="form-control" [(ngModel)]="emailcim" id="email" aria-describedby="emailHelp" name="email" placeholder="pl. erno@cashtrack.hu">
-      
+                    <input type="email" class="form-control" [(ngModel)]="emailcim" id="email" aria-describedby="emailHelp" name="email" placeholder="pl. erno@cashtrack.hu">      
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label toLeft" >Jelszó</label>
@@ -39,15 +35,10 @@
                 </div>
                 <div class="mb-3 mt-3 centered">
                   <button type="submit" class="loginButton">Regisztráció</button>
-                  
               </div>
-                
               </form>
               <p class="question"><b>Már van fiókod?</b> &nbsp; <button class="btn btn-dark" (click)="LoginRoute()">Jelentkezz be!</button></p>
-            
             </div>
-           
-      
             <div class="col-3">
                  <!--BLANK-->
             </div>

@@ -33,19 +33,14 @@ export class LoginComponent {
     AOS.init();
   }
   belepes(): void {
-    console.log('Login fuggveny');
     if (!this.email || !this.jelszo) {
       alert('Kérjük, töltse ki az email és jelszó mezőket!');
       return;
     }
-
     this.loginService.login(this.email, this.jelszo).subscribe({
       next: (response: any) => {
         if (response) {
-          console.log('Sikeres bejelentkezés');
-
           localStorage.setItem('felhasznalo', JSON.stringify(response));
-          console.log('Felhasználó adatai: ', response);
           alert('Sikeres bejelentkezés!');
           this.authService.login();
           this.authService.isLoggedIn.set(true);
@@ -53,13 +48,12 @@ export class LoginComponent {
           this.jovedelemService.jovedelemLekeres();
           this.kiadasService.kiadasKategoriakLekerese();
           this.jovedelemService.KategoriakLekerese();
-
-          
-          // Várunk egy kicsit, hogy a localStorage frissüljön
           setTimeout(() => {
             this.router.navigate(['/dashboard']);
           }, 2000);
-        } else {
+        } 
+        else 
+        {
           console.log('Sikertelen bejelentkezés, hibás email vagy jelszó.');
           alert('Sikertelen bejelentkezés, hibás email vagy jelszó.');
         }
@@ -70,7 +64,6 @@ export class LoginComponent {
       }
     });
   }
-  
   RegisterRoute(): void {
     this.router.navigate(['/register']);
   }
