@@ -17,8 +17,7 @@ export class PolarareaComponent {
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   
      constructor() {
-      this.kiadasoktomb(); // Ezzel biztosítjuk, hogy figyeljük a változásokat
-    
+      this.kiadasoktomb(); 
     }
     
 
@@ -97,7 +96,7 @@ public polarAreaOptions: ChartConfiguration<'polarArea'>['options'] = {
   scales: {
     r: {
       ticks: {
-        display: false // Eltünteti a skálaértékeket
+        display: false
       },
     }
   }
@@ -117,18 +116,16 @@ ngAfterViewInit(){
 
 refreshChart() {
   setTimeout(() => {
-    
-  
   const kiadasok = this.kiadasoktomb();
   console.log('refreshChart metodus',this.kiadasoktomb());
 
-  // Ha még nincsenek adatok, ne csináljunk semmit
+
   if (!kiadasok || kiadasok.length === 0) {
     console.log("Nincsenek adatok a charthoz.");
     return;
   }
 
-  // Kategória darabszámok összesítése
+
   const categoryCounts: { [key: string]: number } = {};
   kiadasok.forEach(kiadas => {
     if (kiadas.kategoria && kiadas.kategoria.kiadasKategoria) {
@@ -137,17 +134,17 @@ refreshChart() {
     }
   });
 
-  // Ha nincs érvényes adat, ne frissítsünk
+
   if (Object.keys(categoryCounts).length === 0) {
     console.warn("Nem található érvényes kategória a chart frissítéséhez.");
     return;
   }
 
-  // Frissítjük a chart adatait
+
   this.polarAreaChartLabels = Object.keys(categoryCounts);
   this.polarAreaChartDatasets[0].data = Object.values(categoryCounts);
 
-  // Ha a chart még nem jött létre, ne próbáljuk frissíteni
+
   if (!this.chart) {
     console.warn("A chart még nem inicializálódott.");
     return;

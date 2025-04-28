@@ -88,7 +88,7 @@ currentYear: number = 0;
         this.jovedelmek.push(jovedelemAdatok);
         this.jovedelemService.jovedelemLekeres()
         this.HaviJovedelemFrissitese();
-        this.HaviOsszesFrissitese(); 
+
         setTimeout(() => {
           this.grafikonFrissitese();
         }, 1000);
@@ -146,18 +146,15 @@ currentYear: number = 0;
     
     if (kiadasAdatok.kiadasHUF && kiadasAdatok.kiadasDatum && kiadasAdatok.kategoriaID) {
       this.kiadasService.kiadasHozzaadas(kiadasAdatok).subscribe((response: any) => {
-        
         if(response){
           console.log('Kiadás hozzáadva',kiadasAdatok);
           alert('Kiadás sikeresen hozzáadva!');
           this.kiadasService.kiadasokLekeres();
           this.HaviKiadasokFrissitese();
-          this.HaviOsszesFrissitese(); 
+
           setTimeout(() => {
             this.grafikonFrissitese();
           }, 1000);
-          
-          
         }
         else{
           alert('Kiadás hozzáadása sikertelen!');
@@ -169,7 +166,6 @@ currentYear: number = 0;
   kiadasokFelugyelet: any[] = []
     jovedelemFelugyelet:any[] = []
     ngOnInit(): void {
-      // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
       const felhasznalo = localStorage.getItem('felhasznalo');
       if (!felhasznalo) {
         this.router.navigate(['/login']);
@@ -179,8 +175,6 @@ currentYear: number = 0;
       this.jovedelemService.KategoriakLekerese();
       this.kiadasService.kiadasokReturn();
       this.jovedelemService.jovedelemLekeres();
-
-      // Adatok inicializálása
       setTimeout(() => {
         this.initializeData();
       }, 500);
@@ -188,22 +182,13 @@ currentYear: number = 0;
       this.grafikonFrissitese();
       AOS.init();
     }
-
     private initializeData(): void {
       this.authService.login();
-      
-      
-      
-      
-      
-      // Adatok betöltése
       this.HaviJovedelemFrissitese();
       this.HaviKiadasokFrissitese();
-      this.HaviOsszesFrissitese(); 
       this.kiadaskategoriatomb = JSON.parse(localStorage.getItem('kiadaskategoriak') || '[]');
       this.jovedelemkategoriatomb = JSON.parse(localStorage.getItem('jovedelemkategoriak') || '[]');
     }
-    //Jövedelem havi kezelése
   jovedelemHaviTemp : number = 0;
   havijovedelmek = computed(() => this.jovedelemService.szamolas());   
     HaviJovedelemFrissitese(){
@@ -211,7 +196,7 @@ currentYear: number = 0;
       console.log('havijovdelemek signal',this.havijovedelmek())
      
     }
-  //Kiadások havi kezelése
+  //Kiadások kezelése
   havikiadasokSzamolo:number = 0;
   havikiadasok =computed(() => this.kiadasService.szamolas()); 
   
@@ -219,22 +204,16 @@ currentYear: number = 0;
   HaviKiadasokFrissitese(){
     this.kiadasService.kiadOsszeadas()
   }
-
   haviosszes = computed(() => this.havijovedelmek() - this.havikiadasok());   ;
-  
-  HaviOsszesFrissitese(){
-   /*  return this.haviosszes.update(count => this.havijovedelmek() - this.havikiadasok()) */
-  }
+
     logout(): void {
       this.authService.logout();
       this.router.navigate(['/home']);
       localStorage.clear();
     }
-  
     notWorking(): void{
       alert('Ez a funkció jelenleg nem elérhető!');
     }
-    
     ngOnDestroy(): void {
       if (this.subscription) {
         this.subscription.unsubscribe();
